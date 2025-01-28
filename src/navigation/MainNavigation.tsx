@@ -24,11 +24,11 @@ export const MainNavigation = () => {
     <Stack.Navigator
       initialRouteName={Routes.Home}
       screenOptions={() => ({
-        headerShown: true,
+        headerShown: false,
         gestureEnabled: true,
       })}>
       <Stack.Screen name={'Drawer'} component={DrawerNavigation} />
-      <Stack.Screen name={Routes.Home} component={HomeScreen} />
+      <Stack.Screen name={Routes.About} component={AboutScreen} />
     </Stack.Navigator>
   );
 };
