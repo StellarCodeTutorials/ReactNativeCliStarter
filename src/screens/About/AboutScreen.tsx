@@ -4,7 +4,7 @@ import globalStyle from '../../assets/styles/globalStyles';
 
 const AboutScreen = () => {
   return (
-    <SafeAreaView style={[globalStyle.backgroundWhite, globalStyle.flex]}>
+    <SafeAreaView style={[globalStyle.backgroundWhite, globalStyle.flex, globalStyle.centerContent]}>
       <Text>AboutScreen</Text>
     </SafeAreaView>
   );

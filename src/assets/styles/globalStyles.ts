@@ -10,7 +10,11 @@ const globalStyle = StyleSheet.create({
     },
     marginBottom24: {
        marginBottom: verticalScale(24) 
-    }
+    },
+    centerContent: {
+        justifyContent: 'center',
+        alignItems: 'center',
+      }
 });
 
 export default globalStyle;
