@@ -1,7 +1,7 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import {Routes} from './Routes';
 import HomeScreen from '../screens/Home/HomeScreen';
-import {createDrawerNavigator, DrawerContent} from '@react-navigation/drawer';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import AboutScreen from '../screens/About/AboutScreen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -9,7 +9,11 @@ import {faHome} from '@fortawesome/free-solid-svg-icons/faHome';
 import {faHouseChimney} from '@fortawesome/free-solid-svg-icons/faHouseChimney';
 import {faUserAlt} from '@fortawesome/free-solid-svg-icons/faUserAlt';
 import {faUserAltSlash} from '@fortawesome/free-solid-svg-icons/faUserAltSlash';
+import {faBars} from '@fortawesome/free-solid-svg-icons/faBars';
 import {BottomTabNavigationOptions} from '@react-navigation/bottom-tabs';
+import {DrawerActions, useNavigation} from '@react-navigation/native';
+import {TouchableOpacity} from 'react-native';
+import DrawerContent from './DrawerContent';
 
 const bottomTabConfig = [
   {
@@ -49,21 +53,45 @@ const tabScreenOptions = ({route}: any): BottomTabNavigationOptions => ({
   tabBarStyle: {
     height: 60,
   },
+  headerStyle: {
+    backgroundColor: '#0163d2',
+  },
+  headerTitleStyle: {
+    color: '#fff',
+  },
+  headerLeft: () => {
+    const navigation = useNavigation();
+    return (
+      <TouchableOpacity
+        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+        <FontAwesomeIcon icon={faBars} color="#fff" />
+      </TouchableOpacity>
+    );
+  },
 });
 
 // Stack Navigation
 export const StackNavigation = () => {
   const Stack = createStackNavigator();
+  const navigation = useNavigation();
 
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: true,
         headerStyle: {
-          backgroundColor: 'red',
+          backgroundColor: '#0163d2',
         },
         headerTintColor: '#fff',
         headerTitleAlign: 'center',
+        headerLeft: () => {
+          return (
+            <TouchableOpacity
+              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+              <FontAwesomeIcon icon={faBars} color="#fff" />
+            </TouchableOpacity>
+          );
+        },
       }}>
       <Stack.Screen name={Routes.Home} component={HomeScreen} />
       <Stack.Screen name={Routes.About} component={AboutScreen} />
@@ -77,18 +105,17 @@ export const DrawerNavigation = () => {
 
   return (
     <Drawer.Navigator
-      // drawerContent={props => <DrawerContent {...props} />}
+      drawerContent={props => <DrawerContent {...props} />}
       screenOptions={{
-        headerShown: true,
+        headerShown: false,
         headerStyle: {
           backgroundColor: '#0163d2',
         },
         headerTintColor: '#fff',
         headerTitleAlign: 'center',
       }}>
-      {/* <Drawer.Screen name={'Drawer'} component={BottomTabNavigation} /> */}
-      <Drawer.Screen name={Routes.Home} component={StackNavigation} />
-      {/* <Drawer.Screen name={Routes.About} component={AboutScreen} /> */}
+      <Drawer.Screen name={Routes.Home} component={BottomTabNavigation} />
+      {/* <Drawer.Screen name={Routes.Home} component={StackNavigation} /> */}
     </Drawer.Navigator>
   );
 };
