@@ -1,10 +1,4 @@
-import {
-  ActivityIndicator,
-  FlatList,
-  SafeAreaView,
-  Text,
-  View,
-} from 'react-native';
+import {FlatList, Pressable, SafeAreaView, Text, View} from 'react-native';
 import React, {useEffect} from 'react';
 import globalStyle from '../../assets/styles/globalStyles';
 import homeStyles from './homeStyle';
@@ -12,7 +6,7 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../../redux/store';
 import {useDispatch} from 'react-redux';
 import {AppDispatch} from '../../redux/store';
-import {fetchExampleData} from '../../redux/slices/exampleSlice';
+import {postSlice} from '../../redux/slices/exampleSlice';
 
 const HomeScreen = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -21,13 +15,23 @@ const HomeScreen = () => {
   );
   console.log('loading, error, data', loading, error, data);
 
-  useEffect(() => {
-    dispatch(fetchExampleData());
-  }, [dispatch]);
+  const handleAddPost = () => {
+    const newPost = {id: Date.now(), title: 'New Post'};
+    dispatch(postSlice.postData(newPost));
+  };
 
-  if (loading)
-    return <ActivityIndicator size="large" style={homeStyles.centered} />;
-  if (error) return <Text style={homeStyles.error}>Error: {error}</Text>;
+  const handleUpdatePost = (id: number) => {
+    const updatedPost = {id, title: 'Updated Post'};
+    dispatch(postSlice.updateData(id, updatedPost));
+  };
+
+  const handleDeletePost = (id: number) => {
+    dispatch(postSlice.deleteData(id));
+  };
+
+  useEffect(() => {
+    dispatch(postSlice.fetchData());
+  }, [dispatch]);
 
   return (
     <SafeAreaView
@@ -37,14 +41,29 @@ const HomeScreen = () => {
         globalStyle.centerContent,
       ]}>
       <Text style={homeStyles.title}>Home Screen</Text>
+
+      <Pressable onPress={handleAddPost}>
+        <View>
+          <Text>Add Post</Text>
+        </View>
+      </Pressable>
+
       <View style={homeStyles.container}>
+        {loading && <Text style={homeStyles.title}>Loading...</Text>}
         <FlatList
           data={data}
           keyExtractor={item => item.id.toString()}
           renderItem={({item}) => (
-            <View style={homeStyles.item}>
-              <Text style={homeStyles.title}>{item.title}</Text>
-            </View>
+            <Pressable onPress={() => handleUpdatePost(item.id)}>
+              <View style={homeStyles.item}>
+                <Text style={homeStyles.title}>{item.title}</Text>
+              </View>
+              <Pressable onPress={() => handleDeletePost(item.id)}>
+                <View>
+                  <Text>Delete Post</Text>
+                </View>
+              </Pressable>
+            </Pressable>
           )}
         />
       </View>
