@@ -14,6 +14,7 @@ import {BottomTabNavigationOptions} from '@react-navigation/bottom-tabs';
 import {DrawerActions, useNavigation} from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native';
 import DrawerContent from './DrawerContent';
+import Onboard from '../components/Onboarding/Onboard';
 
 const bottomTabConfig = [
   {
@@ -78,7 +79,7 @@ export const StackNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown: true,
+        headerShown: false,
         headerStyle: {
           backgroundColor: '#0163d2',
         },
@@ -93,8 +94,10 @@ export const StackNavigation = () => {
           );
         },
       }}>
-      <Stack.Screen name={Routes.Home} component={HomeScreen} />
-      <Stack.Screen name={Routes.About} component={AboutScreen} />
+      <Stack.Screen name={'Onboarding'} component={Onboard} />
+      <Stack.Screen name={Routes.Home} component={DrawerNavigation} />
+      {/* <Stack.Screen name={Routes.Home} component={HomeScreen} />
+      <Stack.Screen name={Routes.About} component={AboutScreen} /> */}
     </Stack.Navigator>
   );
 };
@@ -105,6 +108,7 @@ export const DrawerNavigation = () => {
 
   return (
     <Drawer.Navigator
+      initialRouteName={Routes.Home}
       drawerContent={props => <DrawerContent {...props} />}
       screenOptions={{
         headerShown: false,
@@ -115,7 +119,6 @@ export const DrawerNavigation = () => {
         headerTitleAlign: 'center',
       }}>
       <Drawer.Screen name={Routes.Home} component={BottomTabNavigation} />
-      {/* <Drawer.Screen name={Routes.Home} component={StackNavigation} /> */}
     </Drawer.Navigator>
   );
 };

@@ -13,7 +13,6 @@ const HomeScreen = () => {
   const {data, loading, error} = useSelector(
     (state: RootState) => state.example,
   );
-  console.log('loading, error, data', loading, error, data);
 
   const handleAddPost = () => {
     const newPost = {id: Date.now(), title: 'New Post'};

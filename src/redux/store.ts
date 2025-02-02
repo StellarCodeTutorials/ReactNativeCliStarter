@@ -17,7 +17,6 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
-  //   middleware: [thunk] as Middleware[],
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: false, // Prevent serialization issues with redux-persist
