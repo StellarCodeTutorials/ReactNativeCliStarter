@@ -28,6 +28,8 @@
 		4FCAFEA448EE452AA5F84667 /* Inter-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62770858C3734CA5A5989BAE /* Inter-SemiBoldItalic.ttf */; };
 		C70A689DAE4F4B6EB56B9C94 /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9A116BFA8064C3580C8B5E6 /* Inter-Thin.ttf */; };
 		49A867D24FA14B49A1C022BB /* helper.js in Resources */ = {isa = PBXBuildFile; fileRef = 48B271535F6B4A4C92E22FD6 /* helper.js */; };
+		C90743360B38472FB1EDA217 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE2FB92736B04414A53167DC /* BootSplash.storyboard */; };
+		C7B7716E62DF4DE09A1AD7BB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E39A2E7E83AA44278F639E06 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		62770858C3734CA5A5989BAE /* Inter-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "Inter-SemiBoldItalic.ttf"; path = "../src/assets/fonts/Inter-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		C9A116BFA8064C3580C8B5E6 /* Inter-Thin.ttf */ = {isa = PBXFileReference; name = "Inter-Thin.ttf"; path = "../src/assets/fonts/Inter-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		48B271535F6B4A4C92E22FD6 /* helper.js */ = {isa = PBXFileReference; name = "helper.js"; path = "../src/assets/fonts/helper.js"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BE2FB92736B04414A53167DC /* BootSplash.storyboard */ = {isa = PBXFileReference; name = "BootSplash.storyboard"; path = "RNCliApp/BootSplash.storyboard"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E39A2E7E83AA44278F639E06 /* Colors.xcassets */ = {isa = PBXFileReference; name = "Colors.xcassets"; path = "RNCliApp/Colors.xcassets"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = folder.assetcatalog; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				BE2FB92736B04414A53167DC /* BootSplash.storyboard */,
+				E39A2E7E83AA44278F639E06 /* Colors.xcassets */,
 			);
 			name = RNCliApp;
 			sourceTree = "<group>";
@@ -262,6 +268,8 @@
 				4FCAFEA448EE452AA5F84667 /* Inter-SemiBoldItalic.ttf in Resources */,
 				C70A689DAE4F4B6EB56B9C94 /* Inter-Thin.ttf in Resources */,
 				49A867D24FA14B49A1C022BB /* helper.js in Resources */,
+				C90743360B38472FB1EDA217 /* BootSplash.storyboard in Resources */,
+				C7B7716E62DF4DE09A1AD7BB /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

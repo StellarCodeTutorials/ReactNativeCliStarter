@@ -10,6 +10,7 @@ import {persistor, store} from './src/redux/store';
 import {PersistGate} from 'redux-persist/integration/react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Onboard from './src/components/Onboarding/Onboard';
+import BootSplash from 'react-native-bootsplash';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -49,6 +50,15 @@ function App(): React.JSX.Element {
   useEffect(() => {
     checkFirstLaunch();
     // clearAlreadyLaunched();
+
+    const init = async () => {
+      // …do multiple sync or async tasks
+    };
+
+    init().finally(async () => {
+      await BootSplash.hide({fade: true});
+      console.log('BootSplash has been hidden successfully');
+    });
   }, []);
 
   return (
@@ -57,7 +67,11 @@ function App(): React.JSX.Element {
         {isFirstLaunch ? (
           <Onboard onClick={() => setIsFirstLaunch(false)} />
         ) : (
-          <NavigationContainer>
+          <NavigationContainer
+          // onReady={() => {
+          //   BootSplash.hide();
+          // }}
+          >
             <RouteNavigation />
           </NavigationContainer>
         )}
